@@ -1,0 +1,29 @@
+{
+  "name": "yohoho",
+  "version": "0.0.1",
+  "description": "API client for official Yo API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/remixz/yohoho.git"
+  },
+  "keywords": [
+    "yo"
+  ],
+  "author": "Zach Bruggeman <mail@bruggie.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/remixz/yohoho/issues"
+  },
+  "homepage": "https://github.com/remixz/yohoho",
+  "dependencies": {
+    "request": "^2.37.0",
+    "xhr": "^1.13.0"
+  },
+  "browser": {
+    "request": "xhr"
+  }
+}
