@@ -28,7 +28,7 @@ module.exports = function (token) {
                 form: body
             }, function (err, resp, body) {
                 if (typeof body === 'string' && body.indexOf('Rate limit exceeded') !== -1) {
-                    return callback(body, null);
+                    return callback(body, false);
                 }
 
                 if (err) return callback(err, false);
@@ -48,7 +48,7 @@ module.exports = function (token) {
                 form: body
             }, function (err, resp, body) {
                 if (typeof body === 'string' && body.indexOf('Rate limit exceeded') !== -1) {
-                    return callback(body, null);
+                    return callback(body, false);
                 }
 
                 if (err) return callback(err, false);
