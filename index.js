@@ -31,7 +31,8 @@ module.exports = function (token) {
                     return callback(body, null);
                 }
 
-                callback(err, body);
+                if (err) return callback(err, false);
+                callback(null, true);
             });
         },
 
@@ -50,7 +51,8 @@ module.exports = function (token) {
                     return callback(body, null);
                 }
 
-                callback(err, body);
+                if (err) return callback(err, false);
+                callback(null, true);
             });
         },
 
@@ -65,7 +67,8 @@ module.exports = function (token) {
                     return callback(body, null);
                 }
 
-                callback(err, body);
+                if (err) return callback(err, null);
+                callback(null, body.result);
             });
         }
     }

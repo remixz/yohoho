@@ -22,7 +22,7 @@ I personally recommend using Browserify on the npm module. However, you can also
 
 ### Usage
 
-Every function calls a callback `function (err, body) {}`. `err` is any error in the request, and `body` is the response from the server.
+Every function calls a callback `function (err, body) {}`. `err` is any error in the request, and `body` is the response from the server, or a boolean for a request that just indicates success.
 
 ```js
 var yohoho = require('yohoho'); // if you're using node/browserify
@@ -30,17 +30,17 @@ var yohoho = require('yohoho'); // if you're using node/browserify
 var yo = yohoho('API_TOKEN'); // grab an API token from http://dev.justyo.co/, if you don't have one
 
 // send a yo to an individual username from your API account
-yo.yo('USERNAME', function (err, body) {
-    // returns { result: 'OK' } when successful
+yo.yo('USERNAME', function (err, success) {
+    // returns `true` when successful
 });
 
 // sends a yo to all of your subscribers from your API account
-yo.yoAll(function (err, body) {
-    // returns {} when successful
+yo.yoAll(function (err, success) {
+    // returns `true` when successful
 });
 
 // returns the amount of subscribers your API account has
-yo.countSubscribers(function (err, body) {
-    // returns a result in this format: { result: 1 }
+yo.countSubscribers(function (err, subscribers) {
+    // returns the number of subscribers
 });
 ```
