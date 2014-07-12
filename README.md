@@ -4,9 +4,9 @@ A wrapper around the [official Yo API](http://dev.justyo.co/yo/docs.html), for b
 
 [![NPM](https://nodei.co/npm/yohoho.png?compact=true)](https://nodei.co/npm/yohoho/)
 
-### Note
+### Browser Usage
 
-As of me writing this README, the Yo API doesn't support CORS, so it can't be used in the browser yet. I've sent an email to Yo, asking if they'll change that. Once they do, this will work in the browser.
+Unfortunately, Yo has decided to not make their API routes CORS compatible right now. So, to use this in the browser, you'll need to use a CORS proxy. To do this, I've made it so you can set your own host. Take a look in the usage section below.
 
 ### Installation
 
@@ -27,7 +27,11 @@ Every function calls a callback `function (err, body) {}`. `err` is any error in
 ```js
 var yohoho = require('yohoho'); // if you're using node/browserify
 
-var yo = yohoho('API_TOKEN'); // grab an API token from http://dev.justyo.co/, if you don't have one
+// grab an API token from http://dev.justyo.co/, if you don't have one
+var yo = yohoho('API_TOKEN');
+
+// if you're using this in the browser, you'll need to set the host to a CORS proxy. example:
+var yo = yohoho('API_TOKEN', { host: 'http://www.corsproxy.com/api.justyo.co' });
 
 // send a yo to an individual username from your API account
 yo.yo('USERNAME', function (err, success) {

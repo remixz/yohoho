@@ -8,11 +8,11 @@
 var request = require('request');
 var qs      = require('querystring');
 
-// the yo api needs a trailing slash apparently
-var API_HOST = 'http://api.justyo.co/{{ROUTE}}/';
-
-module.exports = function (token) {
+module.exports = function (token, opts) {
     if (!token) throw new Error('An API token is required. Visit http://dev.justyo.co to get an API account.');
+
+    opts = opts || {};
+    if (!opts.host) opts.host = 'http://api.justyo.co';
 
     return {
         yo: function (username, callback) {
@@ -22,7 +22,7 @@ module.exports = function (token) {
             });
 
             request({
-                uri: API_HOST.replace('{{ROUTE}}', 'yo'),
+                uri: opts.host + '/yo/',
                 method: 'POST',
                 json: true,
                 form: body
@@ -42,7 +42,7 @@ module.exports = function (token) {
             });
 
             request({
-                uri: API_HOST.replace('{{ROUTE}}', 'yoall'),
+                uri: opts.host + '/yoall/',
                 method: 'POST',
                 json: true,
                 form: body
@@ -58,7 +58,7 @@ module.exports = function (token) {
 
         countSubscribers: function (callback) {
             request({
-                uri: API_HOST.replace('{{ROUTE}}', 'subscribers_count'),
+                uri: opts.host + '/subscribers_count/',
                 method: 'GET',
                 json: true,
                 qs: { api_token: token }
